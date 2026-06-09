@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base layer ────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-body text-gray-800 bg-white;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* Selection colour */
+  ::selection {
+    background-color: #C0392B22;
+    color: #1F3A5F;
+  }
+
+  /* Display headings — tight tracking at large sizes */
+  h1, h2, h3 {
+    @apply font-display;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  h4, h5, h6 {
+    @apply font-display;
+    line-height: 1.25;
+  }
+
+  /* Keep images in flow */
+  img { @apply max-w-full block; }
+
+  /* Focus ring reset — we add our own per-component */
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid #C0392B;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ─── Design-system component classes ───────────────────────── */
+@layer components {
+
+  /* Pill CTAs — rounded-full is the premium standard */
+  .btn-primary {
+    @apply inline-flex items-center gap-2
+           bg-nepal-red text-white
+           px-7 py-3 rounded-full
+           text-[13px] font-semibold font-body tracking-wider uppercase
+           hover:bg-[#a93226] active:bg-[#96281b]
+           transition-all duration-300
+           focus-visible:ring-2 focus-visible:ring-nepal-red focus-visible:ring-offset-2
+           select-none;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2
+           border-2 border-white/80 text-white
+           px-7 py-3 rounded-full
+           text-[13px] font-semibold font-body tracking-wider uppercase
+           hover:bg-white hover:text-navy-800 hover:border-white
+           transition-all duration-300
+           select-none;
+  }
+
+  .btn-outline-navy {
+    @apply inline-flex items-center gap-2
+           border-2 border-navy-800 text-navy-800
+           px-7 py-3 rounded-full
+           text-[13px] font-semibold font-body tracking-wider uppercase
+           hover:bg-navy-800 hover:text-white
+           transition-all duration-300
+           select-none;
+  }
+
+  /* Layout helpers */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-28;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card surface */
+  .card-base {
+    @apply bg-white rounded-2xl border border-gray-100
+           shadow-sm hover:shadow-lg
+           transition-shadow duration-400;
+  }
+
+  /* Legacy alias */
+  .card-shadow {
+    @apply shadow-sm hover:shadow-lg transition-shadow duration-400;
+  }
+
+  /* Tag / badge */
+  .tag {
+    @apply inline-block px-2.5 py-1 rounded-full
+           text-[10px] font-bold uppercase tracking-wider;
+  }
+
+  /* Eyebrow label — one consistent treatment everywhere */
+  .eyebrow {
+    @apply font-body text-[11px] font-semibold uppercase tracking-ultra text-nepal-red;
+  }
+
+  .eyebrow-gold {
+    @apply font-body text-[11px] font-semibold uppercase tracking-ultra text-nepal-gold;
+  }
+
+  .eyebrow-muted {
+    @apply font-body text-[11px] font-semibold uppercase tracking-ultra text-white/55;
+  }
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: #f0ede8; }
+::-webkit-scrollbar-thumb  { background: #1F3A5F; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #C0392B; }
