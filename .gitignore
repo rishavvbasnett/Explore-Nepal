@@ -32,3 +32,4 @@ yarn-error.log*
 .env.*.local
 FullWebsite.html
 *.html:Zone.Identifier
+CLAUDE.md
